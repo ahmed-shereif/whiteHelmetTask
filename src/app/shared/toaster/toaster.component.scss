@@ -1,14 +1,44 @@
+.toaster-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 18px;
+}
 
+.toaster-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+}
+
+.toaster-icon-title {
+  display: flex;
+  align-items: center;
+}
+
+.toaster-icon {
+  margin-right: 12px; /* Equivalent to Tailwind's `me-3` */
+}
 
 .toaster-title {
   font-size: 20px;
   color: var(--label-color);
+  margin: 0;
 }
-.toaster-message {
-  color: var(--darkBlue);
-  font-size: 16px;
-}
+
 .toaster-cancel-icon {
   color: var(--darkgray);
   font-size: 24px;
+  cursor: pointer;
+}
+
+.toaster-message-container {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  height: 70px;
+  padding: 12px 24px;
+  color: var(--darkBlue);
+  font-size: 16px;
 }

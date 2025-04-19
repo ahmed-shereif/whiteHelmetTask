@@ -1,0 +1,16 @@
+:root {
+  /* Font Colors */
+  --font-black: #000000; /* Black font color */
+  --font-gray: #666666; /* Gray font color */
+
+  /* Font Sizes */
+  --font-size-small: 12px;
+  --font-size-medium: 16px;
+  --font-size-large: 20px;
+  --font-size-xlarge: 24px;
+
+  /* Other Colors */
+  --label-color: #333333;
+  --darkBlue: #004080;
+  --darkgray: #666666;
+}

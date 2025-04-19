@@ -34,7 +34,6 @@ export const ApiErrorInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, ne
             }
 
             console.error(errorMessage);
-
             const customError = {
                 message: errorMessage,
                 status: error.status,

@@ -1,13 +1,17 @@
 <mat-card class="login-card">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <h3>Login</h3>
 
+        <div class="centered-text">
+            <h3 class="app-f-lg app-t-black app-fw-normal app-mb-2">Pet Attraction</h3>
+            <h4 class="app-f-sm app-fw-medium app-t-gray app-mb-6">Enter your credentials to access the admin dashboard
+            </h4>
+        </div>
         <div class="input-field">
             <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" type="email" />
+                <mat-label>username</mat-label>
+                <input matInput formControlName="username" />
             </mat-form-field>
-            <app-form-control-error [control]="email" [errorMessages]="{required:'email is required' }">
+            <app-form-control-error [control]="username" [errorMessages]="{required:'username is required' }">
             </app-form-control-error>
         </div>
 
@@ -24,7 +28,7 @@
             </app-form-control-error>
 
         </div>
-        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+        <button mat-flat-button color="primary" type="submit" class="login-btn" [disabled]="loginForm.invalid">
             Login
         </button>
     </form>

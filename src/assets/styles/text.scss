@@ -1,0 +1,43 @@
+.app-t-black {
+    color: var(--font-black);
+}
+
+.app-t-gray {
+    color: var(--font-gray);
+}
+
+
+.app-f-sm {
+    font-size: var(--font-size-small);
+}
+
+.app-f-md {
+    font-size: var(--font-size-medium);
+}
+
+.app-f-lg {
+    font-size: var(--font-size-large);
+}
+
+.app-f-xl {
+    font-size: var(--font-size-xlarge);
+}
+
+$font-weights: (
+  "thin": 100,
+  "extralight": 200,
+  "light": 300,
+  "normal": 400,
+  "medium": 500,
+  "semibold": 600,
+  "bold": 700,
+  "extrabold": 800,
+  "black": 900,
+  "custom475": 475
+);
+
+@each $name, $weight in $font-weights {
+  .app-fw-#{$name} {
+    font-weight: $weight;
+  }
+}

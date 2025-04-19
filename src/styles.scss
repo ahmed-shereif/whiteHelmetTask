@@ -1,18 +1,33 @@
 @use '@angular/material' as mat;
 @use "assets/styles/matForm.scss";
+@use "assets/styles/variables.css";
+@use "assets/styles/text.scss";
+@use "assets/styles/spacing.scss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  margin: 0;
-  height: 100%;
+  background: linear-gradient(to right, #e0e7ff, #f3f4f6);
 }
 
 
-:root {
-  --label-color: #333333;
-  /* Default label color */
-  --darkBlue: #004080;
-  /* Example variable */
-  --darkgray: #666666;
-  /* Example variable */
+.centered-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
+

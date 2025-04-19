@@ -11,7 +11,7 @@ import { AllowedErrorKeys, ErrorMessages, ALLOWED_ERROR_KEYS } from './ErrorMess
   styleUrls: ['./form-control-error.component.scss'],
   imports: [CommonModule, MatFormFieldModule],
 })
-export class FormControlErrorComponent {
+export class FormControlErrorComponent  {
   @Input() control!: AbstractControl | null;
   @Input() errorMessages: ErrorMessages = {};
 
