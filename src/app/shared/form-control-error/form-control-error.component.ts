@@ -1,26 +1,21 @@
-// form-control-error.component.ts
-import { Component, Input, computed, signal } from '@angular/core';
-import { AbstractControl, ReactiveFormsModule, ValidationErrors } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AllowedErrorKeys, ErrorMessages, ALLOWED_ERROR_KEYS } from './ErrorMessages';
 
 @Component({
   selector: 'app-form-control-error',
   standalone: true,
   templateUrl: './form-control-error.component.html',
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-
-    
-  ],
+  styleUrls: ['./form-control-error.component.scss'],
+  imports: [CommonModule, MatFormFieldModule],
 })
 export class FormControlErrorComponent {
   @Input() control!: AbstractControl | null;
-  @Input() errorMessages: Record<string, string> = {};
+  @Input() errorMessages: ErrorMessages = {};
 
-  defaultMessages: Record<string, string> = {
+  defaultMessages: ErrorMessages = {
     required: 'This field is required.',
     email: 'Please enter a valid email address.',
     minlength: 'Too short.',
@@ -32,8 +27,10 @@ export class FormControlErrorComponent {
     return { ...this.defaultMessages, ...this.errorMessages };
   }
 
-  get errorKeys(): string[] {
+  get errorKeys(): AllowedErrorKeys[] {
     if (!this.control?.errors) return [];
-    return Object.keys(this.control.errors);
+    return Object.keys(this.control.errors).filter((key): key is AllowedErrorKeys =>
+      ALLOWED_ERROR_KEYS.includes(key as AllowedErrorKeys)
+    );
   }
 }

@@ -1,5 +1,5 @@
 @if (control && control.invalid && (control.touched || control.dirty)) {
   @for (errKey of errorKeys; track errKey) {
-    <mat-error>{{ messages[errKey] }}</mat-error>
+  <mat-error class="error-msg">{{ messages[errKey] }}</mat-error>
   }
-}
+  }

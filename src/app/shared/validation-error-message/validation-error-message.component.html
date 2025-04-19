@@ -1,8 +1,0 @@
-@if (validationFormControl?.invalid && validationFormControl?.touched) {
-<div class="error-container">
-    <mat-icon aria-hidden="false" fontIcon="error_outline" class="error-icon"></mat-icon>
-    @for (item of validationFormControl.errors | keyvalue; track item.key) {
-    <mat-error class="error-message">{{errorMessage()[item.key]}}</mat-error>
-    }
-</div>
-}

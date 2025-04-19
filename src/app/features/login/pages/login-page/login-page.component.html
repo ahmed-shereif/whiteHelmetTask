@@ -7,10 +7,7 @@
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email" type="email" />
             </mat-form-field>
-            <app-form-control-error [control]="email">
-                @if (email?.hasError('mustStartWithA')) {
-                    <mat-error>Your username must start with “A”.</mat-error>
-                  }    
+            <app-form-control-error [control]="email" [errorMessages]="{required:'email is required' }">
             </app-form-control-error>
         </div>
 
@@ -24,7 +21,7 @@
                 </button>
             </mat-form-field>
             <app-form-control-error [control]="password">
-                 </app-form-control-error>
+            </app-form-control-error>
 
         </div>
         <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
