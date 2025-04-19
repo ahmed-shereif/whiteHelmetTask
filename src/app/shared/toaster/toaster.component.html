@@ -1,0 +1,33 @@
+<div class="felx flex-col bg-white rounded-[18px]">
+    <header class=" flex justify-between items-center px-[24px] py-3">
+        <div class="flex justify-start items-center center">
+            @if(type()=="info"){
+            <img src="assets/icons/info.svg" alt="" class="me-3">
+
+            }
+            @else if (type()=="warning") {
+            <img src="assets/icons/ion_warning-outline.svg" alt="" class="me-3">
+
+            }
+            @else if (type()=="error") {
+                      
+            <img src="assets/icons/error.svg" alt="" class="me-3">
+
+            }
+            @else if (type()=="success") {
+            <img src="assets/icons/success.svg" alt="" class="me-3">
+
+            }
+
+            <h2 class="toaster-title  m-0">{{title() }}</h2>
+        </div>
+        <button mat-icon-button (click)="close()" >
+
+            <mat-icon mat-dialog-close class="inline-block cursor-pointer toaster-cancel-icon">close</mat-icon>
+        </button>
+    </header>
+
+    <main class=" flex  items-center justify-stretch h-[70px] toaster-message px-[24px] py-[12px]" >
+        {{message() }}
+    </main>
+</div>

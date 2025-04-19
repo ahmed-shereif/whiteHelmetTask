@@ -1,0 +1,9 @@
+
+body {
+    .mat-mdc-form-field-bottom-align::before {
+      display: none;
+    }
+  }
+  .input-field{
+    margin-bottom: 25px;
+  }

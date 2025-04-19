@@ -1,0 +1,34 @@
+<mat-card class="login-card">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h3>Login</h3>
+
+        <div class="input-field">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email" />
+            </mat-form-field>
+            <app-form-control-error [control]="email">
+                @if (email?.hasError('mustStartWithA')) {
+                    <mat-error>Your username must start with “A”.</mat-error>
+                  }    
+            </app-form-control-error>
+        </div>
+
+        <div class="input-field">
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+                <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+                    <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+            </mat-form-field>
+            <app-form-control-error [control]="password">
+                 </app-form-control-error>
+
+        </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+            Login
+        </button>
+    </form>
+</mat-card>
