@@ -6,8 +6,7 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService extends BaseApiService<User> {
-
+export class UserService extends BaseApiService<'user', User> {
   constructor(http: HttpClient) {
     super(http, 'users');
   }

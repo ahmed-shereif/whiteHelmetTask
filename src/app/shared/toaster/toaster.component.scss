@@ -1,44 +1,52 @@
 .toaster-container {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border-radius: 18px;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 420px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .toaster-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
+  padding: 14px 20px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
 }
 
 .toaster-icon-title {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-.toaster-icon {
-  margin-right: 12px; /* Equivalent to Tailwind's `me-3` */
+.toaster-icon-title mat-icon {
+  font-size: 24px;
+  color: var(--primary-color, #1976d2);
 }
 
 .toaster-title {
-  font-size: 20px;
-  color: var(--label-color);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--label-color, #333);
   margin: 0;
 }
 
-.toaster-cancel-icon {
-  color: var(--darkgray);
-  font-size: 24px;
-  cursor: pointer;
+button[mat-icon-button] {
+  color: var(--darkgray, #666);
+  transition: transform 0.2s ease;
+}
+
+button[mat-icon-button]:hover {
+  transform: rotate(90deg);
 }
 
 .toaster-message-container {
-  display: flex;
-  align-items: center;
-  justify-content: stretch;
-  height: 70px;
-  padding: 12px 24px;
-  color: var(--darkBlue);
-  font-size: 16px;
+  padding: 16px 20px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--darkBlue, #2a3f54);
 }

@@ -1,0 +1,68 @@
+<mat-card class="user-card">
+    <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+        <div class="centered-text">
+            <h3 class="app-f-xl app-t-black app-fw-normal app-mb-2">{{data.dialogType=='edit'?'Edit User Data':'Create New User'}}</h3>
+            <h4 class="app-f-sm app-fw-light app-t-gray app-mb-6">
+                {{data.dialogType=='edit'?'Change User Data and Save change':'Fill in the details to create a new user.'}}
+              
+            </h4>
+        </div>
+
+        <div class="input-field-row">
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="fname" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lname" />
+            </mat-form-field>
+        </div>
+
+        <div class="input-field">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" />
+            </mat-form-field>
+            <app-form-control-error [control]="createUserForm.get('username')" [errorMessages]="{ required: 'Username is required' }">
+            </app-form-control-error>
+        </div>
+
+        <div class="input-field">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" />
+            </mat-form-field>
+            <app-form-control-error [control]="this.createUserForm.get('email')" [errorMessages]="{ required: 'Email is required' }">
+            </app-form-control-error>
+        </div>
+
+        <div class="input-field">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+                <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+                    <mat-icon class="material-symbols-outlined">{{ hidePassword ? 'visibility_off' : 'visibility'
+                        }}</mat-icon>
+                </button>
+            </mat-form-field>
+            <app-form-control-error [control]="this.createUserForm.get('password')" [errorMessages]="{ required: 'Password is required' }">
+            </app-form-control-error>
+        </div>
+
+        <div class="input-field">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Avatar URL</mat-label>
+                <input matInput formControlName="avatar" />
+            </mat-form-field>
+        </div>
+
+        <div class="action-buttons">
+            <button mat-stroked-button type="button" (click)="onCancel()">Cancel</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="createUserForm.invalid">
+               
+                {{data.dialogType=='edit'?'Edit User':'Create New User'}}
+            </button>
+        </div>
+    </form>
+</mat-card>

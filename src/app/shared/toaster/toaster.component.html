@@ -1,6 +1,6 @@
 <div class="toaster-container">
   <header class="toaster-header">
-    <div class="toaster-icon-title">
+    <div class="toaster-icon-title ">
       @if (type() === 'info') {
       <mat-icon svgIcon="info"></mat-icon>
 
@@ -16,10 +16,10 @@
       <mat-icon svgIcon="success"></mat-icon>
 
       }
-      <h2 class="toaster-title">{{ title() }}</h2>
+      <h2 class="toaster-title ">{{ title() }}</h2>
     </div>
     <button mat-icon-button (click)="close()">
-      <mat-icon mat-dialog-close class="toaster-cancel-icon">close</mat-icon>
+      <mat-icon mat-dialog-close class="material-symbols-outlined">close</mat-icon>
     </button>
   </header>
 

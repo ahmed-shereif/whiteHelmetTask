@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 import { PaginatedResponse } from './models/pagination-response';
 import { environment } from 'src/environment/environment.dev';
 import { filterParameters } from '@shared/table/dynamic-table.component';
+import { ApiResponse } from './models/api-response';
 
 
-export abstract class BaseApiService<T> {
+export abstract class BaseApiService<K extends string,T> {
 
   public serviceUrl!: string;
   private baseUrl = `${environment.apiBaseUrl}/`;
@@ -32,12 +33,12 @@ export abstract class BaseApiService<T> {
     return this.http.get<T>(`${this.serviceUrl}/${id}`);
   }
 
-  create(data: Partial<T>): Observable<T> {
-    return this.http.post<T>(this.serviceUrl, data);
+  create(data: Partial<T>): Observable<ApiResponse<K,T>> {
+    return this.http.post<ApiResponse<K, T>>(this.serviceUrl+'/create', data);
   }
 
-  update(id: number, data: Partial<T>): Observable<T> {
-    return this.http.put<T>(`${this.serviceUrl}/${id}`, data);
+  update(id: number, data: Partial<T>): Observable<ApiResponse<K,T>> {
+    return this.http.put<ApiResponse<K,T>>(`${this.serviceUrl}/update`, {...data,id});
   }
 
   delete(id: number):any {

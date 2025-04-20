@@ -6,7 +6,11 @@ import { PaginatedResponse } from '@shared/services/baseApi/models/pagination-re
 import { User } from '../../models/user';
 import { ToasterService } from 'src/app/core/services/toaster.service';
 import { ToasterTypes } from '@shared/toaster/enums/toasterTypes';
+import { AddEditUserComponent } from '../add-edit-user/add-edit-user.component';
+import {
+  MatDialog,
 
+} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users-table',
@@ -20,7 +24,7 @@ export class UsersTableComponent implements OnInit {
   private toasterService = inject(ToasterService);
   userService: UserService = inject(UserService);
   destroyRef: DestroyRef = inject(DestroyRef);
-
+  readonly dialog = inject(MatDialog);
   userData = signal<User[]>([]);
   totalCount = signal<number>(10);
 
@@ -105,14 +109,25 @@ export class UsersTableComponent implements OnInit {
   }
 
   editUser(user: User) {
-    // Implement edit functionality
-    console.log('Editing user:', user);
 
-    // This would typically open a dialog or navigate to an edit page
+    console.log('Editing user:', user);
+    this.openDialog(user)
   }
 
+  openDialog(user: User): void {
+    const dialogRef = this.dialog.open(AddEditUserComponent, {
+      data: { user: user, dialogType: "edit", id: user.id },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+      }
+    });
+  }
+
+
   deleteUser(user: User) {
-    // Implement delete functionality
     console.log('Deleting user:', user);
     this.userService.delete(user.id)
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -138,6 +153,11 @@ export class UsersTableComponent implements OnInit {
         }
       })
   }
+
+
+
+
+
 
 
 }

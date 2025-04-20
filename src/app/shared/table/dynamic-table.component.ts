@@ -131,7 +131,7 @@ export class DynamicTableComponent implements OnInit, OnChanges {
     this.dataSource.filter = this.searchText();
 
 
-    this.loadServerData();
+    this.loadServerData({ pageIndex: 1, perPage: this.paginator.pageSize });
 
   }
 
@@ -144,13 +144,13 @@ export class DynamicTableComponent implements OnInit, OnChanges {
     this.loadServerData();
   }
 
-  private loadServerData() {
+  private loadServerData(option?: filterParameters) {
     if (!this.paginator || !this.sort) return;
 
     // Update the signal instead of using a local variable
     this.filterRequest.update((request) => ({
       ...request,
-      pageIndex: this.paginator.pageIndex + 1,
+      pageIndex: option?.pageIndex ? option?.pageIndex : this.paginator.pageIndex + 1,
       perPage: this.paginator.pageSize,
       search: this.searchText(),
       sortColumn: this.sort.active || undefined,
