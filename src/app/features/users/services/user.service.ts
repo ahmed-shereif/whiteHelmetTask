@@ -9,6 +9,6 @@ import { User } from '../models/user';
 export class UserService extends BaseApiService<User> {
 
   constructor(http: HttpClient) {
-    super(http, 'api/users');
+    super(http, 'users');
   }
 }

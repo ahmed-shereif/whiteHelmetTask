@@ -1,8 +1,9 @@
 // src/app/services/base-api.service.ts
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PaginatedResponse } from './models/pagination-response';
 import { environment } from 'src/environment/environment.dev';
+import { filterParameters } from '@shared/table/dynamic-table.component';
 
 
 export abstract class BaseApiService<T> {
@@ -14,20 +15,14 @@ export abstract class BaseApiService<T> {
     this.serviceUrl = this.baseUrl + path
   }
 
-  getAll(
-    search?: string,
-    page: number = 1,
-    perPage: number = 10,
-    sortColumn?: string,
-    sortOrder?: 'asc' | 'desc'
-  ): Observable<PaginatedResponse<T>> {
+  getAll(param: filterParameters): Observable<PaginatedResponse<T>> {
     let params = new HttpParams()
-      .set('page', page.toString())
-      .set('per_page', perPage.toString());
+      .set('page', param.pageIndex.toString())
+      .set('per_page', param.perPage.toString());
 
-    if (search) params = params.set('search', search);
-    if (sortColumn && sortOrder) {
-      params = params.set('sort_column', sortColumn).set('sort_order', sortOrder);
+    if (param.search) params = params.set('search', param.search);
+    if (param.sortColumn && param.sortOrder) {
+      params = params.set('sort_column', param.sortColumn).set('sort_order', param.sortOrder);
     }
 
     return this.http.get<PaginatedResponse<T>>(this.serviceUrl, { params });
@@ -45,7 +40,13 @@ export abstract class BaseApiService<T> {
     return this.http.put<T>(`${this.serviceUrl}/${id}`, data);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.serviceUrl}/${id}`);
+  delete(id: number):any {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { id };
+
+    return this.http.request('DELETE', `${this.serviceUrl}/delete`, {
+      headers,
+      body
+    });
   }
 }
