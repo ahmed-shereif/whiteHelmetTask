@@ -1,26 +1,29 @@
 <div class="toaster-container">
-    <header class="toaster-header">
-      <div class="toaster-icon-title">
-        @if (type() === 'info') {
-          <img src="assets/icons/info.svg" alt="Info Icon" class="toaster-icon" />
-        }
-        @else if (type() === 'warning') {
-          <img src="assets/icons/ion_warning-outline.svg" alt="Warning Icon" class="toaster-icon" />
-        }
-        @else if (type() === 'error') {
-          <img src="assets/icons/error.svg" alt="Error Icon" class="toaster-icon" />
-        }
-        @else if (type() === 'success') {
-          <img src="assets/icons/success.svg" alt="Success Icon" class="toaster-icon" />
-        }
-        <h2 class="toaster-title">{{ title() }}</h2>
-      </div>
-      <button mat-icon-button (click)="close()">
-        <mat-icon mat-dialog-close class="toaster-cancel-icon">close</mat-icon>
-      </button>
-    </header>
-  
-    <main class="toaster-message-container">
-      {{ message() }}
-    </main>
-  </div>
+  <header class="toaster-header">
+    <div class="toaster-icon-title">
+      @if (type() === 'info') {
+      <mat-icon svgIcon="info"></mat-icon>
+
+      }
+      @else if (type() === 'warning') {
+      <mat-icon svgIcon="ion_warning-outline"></mat-icon>
+      }
+      @else if (type() === 'error') {
+      <mat-icon svgIcon="error"></mat-icon>
+
+      }
+      @else if (type() === 'success') {
+      <mat-icon svgIcon="success"></mat-icon>
+
+      }
+      <h2 class="toaster-title">{{ title() }}</h2>
+    </div>
+    <button mat-icon-button (click)="close()">
+      <mat-icon mat-dialog-close class="toaster-cancel-icon">close</mat-icon>
+    </button>
+  </header>
+
+  <main class="toaster-message-container">
+    {{ message() }}
+  </main>
+</div>

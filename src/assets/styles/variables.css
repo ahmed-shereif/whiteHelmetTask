@@ -1,10 +1,14 @@
 :root {
+  --primary-color:#0F1729;
+
   /* Font Colors */
   --font-black: #000000; /* Black font color */
   --font-gray: #666666; /* Gray font color */
+  --font-white :#ffffff;
 
   /* Font Sizes */
-  --font-size-small: 12px;
+  --font-size-xsmall: 12px;
+  --font-size-small: 14px;
   --font-size-medium: 16px;
   --font-size-large: 20px;
   --font-size-xlarge: 24px;

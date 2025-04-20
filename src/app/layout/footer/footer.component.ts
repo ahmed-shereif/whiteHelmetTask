@@ -11,16 +11,5 @@ import {MatCardModule} from '@angular/material/card';
 export class FooterComponent {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  testApiCall(): void {
-    this.http.get('https://jsonplaceholddder.typicode.com/posts/1').subscribe({
-      next: (response) => {
-        console.log('API Response:', response);
-        this.snackBar.open('API call successful!', 'Close', { duration: 3000 });
-      },
-      error: (error) => {
-        // console.error('API Error:', error);
-        // this.snackBar.open('Warning: API call failed!', 'Close', { duration: 3000, panelClass: ['warning-toaster'] });
-      }
-    });
-  }
+ 
 }

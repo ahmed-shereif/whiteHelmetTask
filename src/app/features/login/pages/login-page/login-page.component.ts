@@ -8,9 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControlErrorComponent } from '@shared/form-control-error/form-control-error.component';
 import { LoginServiceService } from '../../services/login-service.service';
-import { LoginRequest } from '../../models/loginrequest';
+import { LoginRequest } from '../../models/loginRequest';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LoginResponse } from '../../models/loginResponse';
+import { ToasterService } from 'src/app/core/services/toaster.service';
+import { ToasterTypes } from '@shared/toaster/enums/toasterTypes';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -30,6 +33,8 @@ import { LoginResponse } from '../../models/loginResponse';
 })
 export class LoginPageComponent {
   private fb = inject(FormBuilder);
+  private toasterService = inject(ToasterService);
+  private router = inject(Router); 
   hidePassword = true;
   private destroyRef = inject(DestroyRef);
 
@@ -54,11 +59,23 @@ export class LoginPageComponent {
 
       this.loginServiceService
         .login(this.loginForm.value as LoginRequest)
-        .pipe(takeUntilDestroyed(this.destroyRef)) // Automatically unsubscribe when the component is destroyed
+        .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
           next: (response: LoginResponse) => {
             console.log('Login successful:', response);
-            // Handle successful login (e.g., navigate to another page)
+            if (response.accessToken) {
+              sessionStorage.setItem('authToken', response.accessToken);
+              this.toasterService.openToaster(ToasterTypes.success, {
+                data: {
+                  title: 'Login successful',
+                  message: "Welcome back",
+                },
+                horizontalPosition: 'right',
+                verticalPosition: 'top'
+              });
+              this.router.navigate(['/users']);
+              console.log('Token saved to sessionStorage:', response.accessToken);
+            }
           },
           error: (error) => {
             console.error('Login failed:', error);

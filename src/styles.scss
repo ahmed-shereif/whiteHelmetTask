@@ -3,6 +3,9 @@
 @use "assets/styles/variables.css";
 @use "assets/styles/text.scss";
 @use "assets/styles/spacing.scss";
+@use "assets/styles/flex-utils.scss";
+@use "assets/styles/back-ground-utils.scss";
+@use "assets/styles/sizes-utils.scss";
 
 *,
 *::before,
@@ -31,3 +34,6 @@ body {
   text-align: center;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

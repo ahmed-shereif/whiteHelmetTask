@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { AuthGuard } from './core/auth/guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -9,21 +10,21 @@ export const routes: Routes = [
             import('./features/login/login.module').then(
                 (m) => m.LoginModule
             ),
-        // canActivate: [loggedinGuard],
     },
     {
         path: '',
         component: LayoutComponent,
+        canActivate: [AuthGuard],
         children: [
-            // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-            // {
-            //     path: 'dashboard',
-            //     loadChildren: () =>
-            //       import('./feature-modules/dashboard/dashboard.module').then(
-            //         (m) => m.DashboardModule
-            //       ),
-            //     canActivate: [authGuard],
-            //   },
+            { path: '', redirectTo: '/users', pathMatch: 'full' },
+            {
+                path: 'users',
+                loadChildren: () =>
+                    import('./features/users/users.module').then(
+                        (m) => m.UsersModule
+                    ),
+                canActivate: [AuthGuard],
+            },
         ],
     }
 ];

@@ -2,7 +2,8 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MonoTypeOperatorFunction, Observable } from 'rxjs';
 import { LoginResponse } from '../models/loginResponse';
-import { LoginRequest } from '../models/loginrequest';
+import { LoginRequest } from '../models/loginRequest';
+import { environment } from 'src/environment/environment.dev';
 
 
 
@@ -14,7 +15,7 @@ export class LoginServiceService {
     throw new Error('Method not implemented.');
   }
 
-  private loginUrl = 'https://www.melivecode.com/api/login';
+  private loginUrl = `${environment.apiBaseUrl}/login`;
 
   constructor(private http: HttpClient) { }
 

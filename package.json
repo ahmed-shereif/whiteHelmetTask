@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "tailwind:init": "tailwindcss init"
-  },
+    "get-icons":"node get-icons.js"
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.1.0",

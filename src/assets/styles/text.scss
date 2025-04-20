@@ -6,6 +6,14 @@
     color: var(--font-gray);
 }
 
+.app-t-white {
+    color: var(--font-white);
+}
+
+
+.app-f-xs {
+    font-size: var(--font-size-xsmall);
+}
 
 .app-f-sm {
     font-size: var(--font-size-small);
@@ -23,21 +31,25 @@
     font-size: var(--font-size-xlarge);
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 $font-weights: (
-  "thin": 100,
-  "extralight": 200,
-  "light": 300,
-  "normal": 400,
-  "medium": 500,
-  "semibold": 600,
-  "bold": 700,
-  "extrabold": 800,
-  "black": 900,
-  "custom475": 475
+    "thin": 100,
+    "extralight": 200,
+    "light": 300,
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "extrabold": 800,
+    "black": 900,
+    "custom475": 475
 );
 
 @each $name, $weight in $font-weights {
-  .app-fw-#{$name} {
-    font-weight: $weight;
-  }
+    .app-fw-#{$name} {
+        font-weight: $weight;
+    }
 }
