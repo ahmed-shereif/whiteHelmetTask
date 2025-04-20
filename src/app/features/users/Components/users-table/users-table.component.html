@@ -1,0 +1,9 @@
+<div class="container">
+    
+    <app-dynamic-table 
+      [data]="userData" 
+      [config]="tableConfig"
+      (rowClick)="handleRowClick($event)"
+      (actionClick)="handleActionClick($event)">
+    </app-dynamic-table>
+  </div>

@@ -1,0 +1,81 @@
+<!-- dynamic-table.component.html -->
+<div class="dynamic-table-container">
+  <!-- Search Input -->
+  @if (config.enableSearch) {
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search..." #input>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  }
+
+  <!-- Main Table -->
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSource" [matSortDisabled]="!config.enableSort" matSort class="dynamic-table">
+      
+      <!-- Dynamic Columns -->
+      @for (column of config.columns; track column.name) {
+        <ng-container [matColumnDef]="column.name">
+          <th mat-header-cell *matHeaderCellDef [mat-sort-header]="getSortHeaderId(column)">
+            {{ column.header }}
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="onRowClick(element)">
+            {{ getCellValue(element, column) }}
+          </td>
+        </ng-container>
+      }
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="actions-cell"> Actions </th>
+        <td mat-cell *matCellDef="let element" class="actions-cell" (click)="$event.stopPropagation()">
+          <div class="actions-container">
+            @for (action of config.actions || []; track action.action) {
+              @if (shouldShowAction(action, element)) {
+                <button 
+                  mat-icon-button 
+                  [color]="action.color || 'primary'" 
+                  [matTooltip]="action.label"
+                  (click)="onActionClick(action.action, element, $event)">
+                  @if (action.icon) {
+                    <mat-icon class="material-symbols-outlined">{{action.icon}}</mat-icon>
+                  } @else {
+                    <span>{{action.label}}</span>
+                  }
+                </button>
+              }
+            }
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumns;" class="clickable-row"></tr>
+
+      <!-- No Data Row -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell no-data-cell" [attr.colspan]="displayColumns.length">
+          {{ config.noDataMessage }}
+        </td>
+      </tr>
+    </table>
+
+    <!-- Loading Overlay -->
+    @if (!data || data.length === 0) {
+      <div class="no-data-message">
+        <span>{{ config.noDataMessage }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- Pagination -->
+  @if (config.enablePagination && data && data.length > 0) {
+    <mat-paginator 
+      [pageSizeOptions]="config.pageSizeOptions"
+      [pageSize]="config.defaultPageSize"
+      showFirstLastButtons
+      aria-label="Select page">
+    </mat-paginator>
+  }
+</div>

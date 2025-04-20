@@ -1,0 +1,69 @@
+/* dynamic-table.component.scss */
+.dynamic-table-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    .search-field {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    
+    .table-wrapper {
+      position: relative;
+      overflow: auto;
+      min-height: 200px;
+      border-radius: 4px;
+      box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    }
+    
+    .dynamic-table {
+      width: 100%;
+      
+      .clickable-row {
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.04);
+        }
+      }
+      
+      .no-data-cell {
+        padding: 16px;
+        text-align: center;
+        font-style: italic;
+        color: rgba(0, 0, 0, 0.54);
+      }
+      
+      .actions-cell {
+        width: 150px;
+        min-width: 150px;
+        max-width: 200px;
+        
+        .actions-container {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          
+          button {
+            margin: 0 2px;
+          }
+        }
+      }
+    }
+    
+    .no-data-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: rgba(0, 0, 0, 0.54);
+      font-style: italic;
+    }
+    
+    mat-paginator {
+      margin-top: 16px;
+    }
+  }
