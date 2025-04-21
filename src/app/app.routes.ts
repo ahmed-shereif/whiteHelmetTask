@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthGuard } from './core/auth/guards/auth.guard';
+import { NotFoundComponent } from '@shared/not-found/not-found.component';
 
 export const routes: Routes = [
 
@@ -33,6 +34,8 @@ export const routes: Routes = [
                     ),
                 canActivate: [AuthGuard],
             },
+            { path: '**', component: NotFoundComponent },
         ],
-    }
+    },
+    { path: '**', component: NotFoundComponent },
 ];
