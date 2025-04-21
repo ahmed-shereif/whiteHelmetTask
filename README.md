@@ -65,7 +65,7 @@ src/app/
 ### Installation
 ```bash
 # Clone the repository
-git clone [repository-url]
+git clone https://github.com/ahmed-shereif/whiteHelmetTask
 
 # Navigate to project directory
 cd WhiteHelmetTask
