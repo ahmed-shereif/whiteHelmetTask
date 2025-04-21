@@ -28,7 +28,6 @@ export class UsersTableComponent implements OnInit {
   userData = signal<User[]>([]);
   totalCount = signal<number>(10);
 
-  // Table configuration
   tableConfig: TableConfig = {
     columns: [
       { name: 'id', header: 'ID', sortable: true, type: "string" },
@@ -79,7 +78,6 @@ export class UsersTableComponent implements OnInit {
       .subscribe({
         next: (res: PaginatedResponse<User>) => {
           this.userData.set(res.data)
-          this.totalCount.set(res.total)
         },
         error: () => { }
       })

@@ -34,6 +34,14 @@ export const routes: Routes = [
                     ),
                 canActivate: [AuthGuard],
             },
+            {
+                path: 'pet-sales',
+                loadChildren: () =>
+                    import('./features/pet-sales/pet-sales.module').then(
+                        (m) => m.PetSalesModule
+                    ),
+                canActivate: [AuthGuard],
+            },
             { path: '**', component: NotFoundComponent },
         ],
     },

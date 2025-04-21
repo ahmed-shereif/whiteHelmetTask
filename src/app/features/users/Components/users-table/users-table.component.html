@@ -2,6 +2,7 @@
 
   <app-dynamic-table [data]="userData()" [config]="tableConfig" [totalItems]="totalCount()"
     (rowClick)="handleRowClick($event)" (actionClick)="handleActionClick($event)"
-    (serverRequest)="handleServerRequest($event)">
+    (serverRequest)="handleServerRequest($event)"
+    [tableHeight]="'500px'">
   </app-dynamic-table>
 </div>

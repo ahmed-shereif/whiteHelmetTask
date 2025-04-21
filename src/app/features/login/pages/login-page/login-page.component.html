@@ -21,13 +21,22 @@
                 <mat-label>Password</mat-label>
                 <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
                 <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
-                    <mat-icon class="material-symbols-outlined">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <mat-icon class="material-symbols-outlined">{{ hidePassword ? 'visibility_off' : 'visibility'
+                        }}</mat-icon>
                 </button>
             </mat-form-field>
             <app-form-control-error [control]="password">
             </app-form-control-error>
 
         </div>
+
+        <div class="app-f-sm app-t-gray app-mb-5">
+            <p>Demo credentials:</p>
+            <p>Username: karn.yong&#64;melivecode.com</p>
+            <p>Password: melivecode</p>
+        </div>
+
+
         <button mat-flat-button color="primary" type="submit" class="login-btn" [disabled]="loginForm.invalid">
             Login
         </button>

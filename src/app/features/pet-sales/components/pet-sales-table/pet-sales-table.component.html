@@ -1,0 +1,7 @@
+<div class="container">
+
+    <app-dynamic-table [data]="petData()" [config]="tableConfig" [totalItems]="totalCount()"
+[tableHeight]="'400px'"
+      (serverRequest)="handleNewDateSelection()">
+    </app-dynamic-table>
+  </div>

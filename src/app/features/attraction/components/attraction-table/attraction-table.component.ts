@@ -30,7 +30,7 @@ export class AttractionTableComponent implements OnInit {
     columns: [
       { name: 'coverimage', header: 'Cover Image', sortable: false, type: "img" },
       { name: 'id', header: 'ID', sortable: true, type: "string" },
-      { name: 'name', header: 'Name', sortable: false, type: "string" },
+      { name: 'name', header: 'Name', sortable: true, type: "string" },
       { name: 'detail', header: 'Details', sortable: true, type: "string" },
       { name: 'longitude', header: 'Longitude', sortable: true, type: "string" },
       { name: 'latitude', header: 'Latitude', sortable: true, type: "string" },

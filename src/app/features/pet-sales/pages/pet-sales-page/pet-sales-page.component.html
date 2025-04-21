@@ -1,0 +1,23 @@
+<div class="app-my-10 app-flex app-justify-start app-items-center">
+
+    <div class="app-me-10">
+        <p class="app-t-black app-fw-semibold app-f-xl"> Pet Sales Statistics</p>
+        <p class="app-t-gray app-fw-normal app-f-md"> View and analyze pet sales data</p>
+
+    </div>
+    <mat-form-field appearance="outline">
+        <mat-label>Choose a date to show data</mat-label>
+        <input [formControl]="selectedDate" matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</div>
+
+<div id="chart">
+    <app-pet-sales-trend></app-pet-sales-trend>
+</div>
+<div class="app-mb-6">
+    <p class="app-t-black app-fw-semibold app-f-md app-my-2">Daily pet Sales Table</p>
+    <app-pet-sales-table></app-pet-sales-table>
+</div>

@@ -28,10 +28,10 @@ import { LayoutService } from '../services/layout.service';
 
 export class SidebarComponent {
   protected readonly navList: { icon: string, url: string, displayName: string }[] = [
-    { icon: 'bar_chart_4_bars', url: '/dashboard', displayName: "Dashboard" },
+    // { icon: 'bar_chart_4_bars', url: '/dashboard', displayName: "Dashboard" },
     { icon: 'group', url: '/users', displayName: "Users" },
     { icon: 'location_on', url: '/attractions', displayName: "Attraction" },
-    { icon: 'finance_mode', url: '/pest-sales', displayName: "Pet Sales" },
+    { icon: 'finance_mode', url: '/pet-sales', displayName: "Pet Sales" },
   ];
   protected readonly isMobile = signal(false);
   private readonly _mobileQuery: MediaQueryList;

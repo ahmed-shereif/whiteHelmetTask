@@ -74,6 +74,7 @@ export class DynamicTableComponent implements OnInit, OnChanges {
     perPage: 10,
     search: '',
   });
+  @Input() tableHeight:string = '200px';
   @Input() totalItems = 0;
   @Input() data: any[] = [];
   @Input() config: TableConfig = {
