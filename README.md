@@ -26,8 +26,8 @@ ng serve
 
 login using this credentials
 Demo credentials:
-Username: karn.yong@melivecode.com
-Password: melivecode
+- Username: karn.yong@melivecode.com
+- Password: melivecode
 
 you will fin in this task 
 Main Structure:
@@ -37,7 +37,7 @@ Main Structure:
 - Shared Module (shared/): Contains reusable components, directives, and utilities that can be used across multiple modules. For example, the table/ directory includes a dynamic table component that supports sorting, filtering, and pagination.
 - Root Component (app.component.ts): The entry point of the application.
 - Routing (app.routes.ts): Defines the application's routes and supports lazy loading for feature modules.
-- 
+  
 Shared Module:
 The shared/ directory is designed to house reusable components and utilities. For example:
 - Dynamic Table Component (table/): A reusable table component that supports dynamic data binding, sorting, filtering, and pagination. This component can be used in multiple feature modules without duplication.
