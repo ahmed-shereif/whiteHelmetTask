@@ -10,7 +10,7 @@ import { ApiResponse } from './models/api-response';
 export abstract class BaseApiService<K extends string,T> {
 
   public serviceUrl!: string;
-  private baseUrl = `${environment.apiBaseUrl}/`;
+  public baseUrl = `${environment.apiBaseUrl}/`;
 
   constructor(protected http: HttpClient, protected path: string) {
     this.serviceUrl = this.baseUrl + path

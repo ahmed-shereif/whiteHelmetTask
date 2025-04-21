@@ -1,1 +1,22 @@
-<p>header works!</p>
+<div class="app-px-4 app-flex app-items-center app-justify-between header-container">
+
+
+    <div class="app-flex app-flex app-items-center app-justify-between ">
+
+        <button mat-icon-button (click)="toggleSidenav()">
+            <mat-icon class="material-symbols-outlined">menu</mat-icon>
+
+        </button>
+
+        <h1 class="app-t-gray app-f-lg app-fw-normal">Pet Attraction Dashboard</h1>
+    </div>
+    <div class="app-flex  app-justify-center app-items-center">
+
+        <img class="app-w-10 app-h-10" [src]="userData()?.avatar" alt="">
+        <div class=" app-ml-2">
+
+            <p class="app-t-gray app-f-md app-fw-normal pointer app-ml-5" (click)="logout()">Logout</p>
+        </div>
+
+    </div>
+</div>

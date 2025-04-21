@@ -1,17 +1,8 @@
 <div class="sidenav " [class.is-mobile]="isMobile()">
-    <mat-toolbar class="toolbar">
-        <button mat-icon-button (click)="snav.toggle()">
-    
-            <span class="material-symbols-outlined app-mr-3">
-               menu
-            </span>
-        </button>
-        <h1 class="app-name">Responsive App</h1>
-    </mat-toolbar>
 
-    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="isMobile() ? 56 : 0">
+    <mat-sidenav-container class="sidenav-container " [style.marginTop.px]="isMobile() ? 56 : 0">
         <mat-sidenav class="!app-bg-primary app-h-full" #snav [mode]="isMobile() ? 'over' : 'side'"
-            [fixedInViewport]="isMobile()" fixedTopGap="56" [opened]="!isMobile()">
+            [opened]="isSidenavOpen" [fixedInViewport]="isMobile()" fixedTopGap="56" [opened]="!isMobile()">
             <mat-nav-list>
                 @for (nav of navList; track nav) {
                 <div class="app-flex app-px-4 app-py-2 app-justify-start app-items-center pointer"
@@ -27,7 +18,7 @@
             </mat-nav-list>
         </mat-sidenav>
 
-        <mat-sidenav-content class="app-px-4">
+        <mat-sidenav-content class="app-px-4 app-mt-10">
             <ng-content></ng-content>
         </mat-sidenav-content>
     </mat-sidenav-container>

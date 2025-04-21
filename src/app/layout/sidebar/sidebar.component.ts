@@ -7,6 +7,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { LayoutService } from '../services/layout.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -35,7 +36,8 @@ export class SidebarComponent {
   protected readonly isMobile = signal(false);
   private readonly _mobileQuery: MediaQueryList;
   private readonly _mobileQueryListener: () => void;
-
+  private layoutService = inject(LayoutService);
+  isSidenavOpen = true; // Default state
   constructor() {
     const media = inject(MediaMatcher);
 
@@ -43,6 +45,13 @@ export class SidebarComponent {
     this.isMobile.set(this._mobileQuery.matches);
     this._mobileQueryListener = () => this.isMobile.set(this._mobileQuery.matches);
     this._mobileQuery.addEventListener('change', this._mobileQueryListener);
+  }
+  
+  ngOnInit(): void {
+    // Subscribe to sidenav state changes
+    this.layoutService.sidenavState$.subscribe((state) => {
+      this.isSidenavOpen = state;
+    });
   }
   ngOnDestroy(): void {
     this._mobileQuery.removeEventListener('change', this._mobileQueryListener);

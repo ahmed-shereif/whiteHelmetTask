@@ -1,0 +1,50 @@
+<mat-card class="attraction-card">
+    <form [formGroup]="createAttractionForm" (ngSubmit)="onSubmit()">
+        <div class="centered-text">
+            <h3 class="app-f-xl app-t-black app-fw-normal app-mb-2">
+                {{ data.dialogType == 'edit' ? 'Edit Attraction Data' : 'Create New Attraction' }}
+            </h3>
+            <h4 class="app-f-sm app-fw-light app-t-gray app-mb-6">
+                {{ data.dialogType == 'edit' ? 'Change attraction data and save changes' : 'Fill in the details to create a new attraction.' }}
+            </h4>
+        </div>
+
+        <div class="input-field-row">
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Detail</mat-label>
+                <input matInput formControlName="detail" />
+            </mat-form-field>
+        </div>
+
+        <div class="input-field">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Cover Image URL</mat-label>
+                <input matInput formControlName="coverimage" />
+            </mat-form-field>
+            <app-form-control-error [control]="createAttractionForm.get('coverimage')" [errorMessages]="{ required: 'Cover Image URL is required' }">
+            </app-form-control-error>
+        </div>
+
+        <div class="input-field-row">
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Longitude</mat-label>
+                <input matInput formControlName="longitude" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Latitude</mat-label>
+                <input matInput formControlName="latitude" />
+            </mat-form-field>
+        </div>
+
+        <div class="action-buttons">
+            <button mat-stroked-button type="button" (click)="onCancel()">Cancel</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="createAttractionForm.invalid">
+                {{ data.dialogType == 'edit' ? 'Edit Attraction' : 'Create New Attraction' }}
+            </button>
+        </div>
+    </form>
+</mat-card>

@@ -18,7 +18,7 @@ export class ToasterService {
 
   openToaster(type: ToasterTypes, config?: MatSnackBarConfig) {
     this._snackBar.openFromComponent(ToasterComponent, {
-      duration: 55 * 1000,
+      duration: 5 * 1000,
       ...config,
       data: { ...config?.data, type }
     });

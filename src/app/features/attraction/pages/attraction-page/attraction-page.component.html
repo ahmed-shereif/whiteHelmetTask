@@ -1,0 +1,15 @@
+<div>
+    <header class="app-flex app-justify-between app-items-spacebetween app-mb-6 ">
+        <div>
+            <h1 class="app-t-black app-fw-semibold">Attractions</h1>
+            <h4 class="app-t-gray app-fw-normal">Manage System Attractions</h4>
+        </div>
+        <button mat-flat-button (click)="openDialog()" >
+            <mat-icon class="material-symbols-outlined">add</mat-icon>
+            <span>Add attraction</span>
+        </button>
+    </header>
+
+    <app-attraction-table></app-attraction-table>
+
+</div>

@@ -25,6 +25,14 @@ export const routes: Routes = [
                     ),
                 canActivate: [AuthGuard],
             },
+            {
+                path: 'attractions',
+                loadChildren: () =>
+                    import('./features/attraction/attraction.module').then(
+                        (m) => m.AttractionModule
+                    ),
+                canActivate: [AuthGuard],
+            },
         ],
     }
 ];

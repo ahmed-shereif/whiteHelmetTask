@@ -1,0 +1,7 @@
+<div class="container">
+
+    <app-dynamic-table [data]="attractionData()" [config]="tableConfig" [totalItems]="totalCount()"
+      (rowClick)="handleRowClick($event)" (actionClick)="handleActionClick($event)"
+      (serverRequest)="handleServerRequest($event)">
+    </app-dynamic-table>
+  </div>

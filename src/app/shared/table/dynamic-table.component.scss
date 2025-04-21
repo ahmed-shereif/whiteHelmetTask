@@ -73,4 +73,14 @@
     object-fit: cover;
     border-radius: 4px;
   }
+  .mat-column-coverimage{
+    padding: 20px;
+    .table-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 4px;
+    
+    }
+  }
 }

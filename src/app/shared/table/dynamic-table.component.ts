@@ -125,7 +125,6 @@ export class DynamicTableComponent implements OnInit, OnChanges {
   }
 
 
-  // Modified to use the search subject
   applyFilter(): void {
     this.searchText.set(this.searchForm.get('search')?.value.trim().toLowerCase());
     this.dataSource.filter = this.searchText();
@@ -135,7 +134,6 @@ export class DynamicTableComponent implements OnInit, OnChanges {
 
   }
 
-  // Add handlers for server-side events
   protected onSortChange(sort: Sort) {
     this.loadServerData();
   }
@@ -147,7 +145,6 @@ export class DynamicTableComponent implements OnInit, OnChanges {
   private loadServerData(option?: filterParameters) {
     if (!this.paginator || !this.sort) return;
 
-    // Update the signal instead of using a local variable
     this.filterRequest.update((request) => ({
       ...request,
       pageIndex: option?.pageIndex ? option?.pageIndex : this.paginator.pageIndex + 1,
@@ -157,7 +154,6 @@ export class DynamicTableComponent implements OnInit, OnChanges {
       sortOrder: this.sort.direction as 'asc' | 'desc' || undefined,
     }));
 
-    // Emit the updated filterRequest signal value
     this.serverRequest.emit(this.filterRequest());
 
   }

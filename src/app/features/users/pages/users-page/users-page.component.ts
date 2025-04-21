@@ -4,9 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { UsersTableComponent } from '../../Components/users-table/users-table.component';
 import { AddEditUserComponent } from '../../Components/add-edit-user/add-edit-user.component';
 import {
-  MatDialog,
-
-} from '@angular/material/dialog';
+  MatDialog,} from '@angular/material/dialog';
 @Component({
   selector: 'app-users-page',
   imports: [
@@ -18,10 +16,6 @@ import {
   styleUrl: './users-page.component.scss'
 })
 export class UsersPageComponent {
-
-
-  readonly animal = signal('');
-  readonly name = model('');
   readonly dialog = inject(MatDialog);
 
   openDialog(): void {

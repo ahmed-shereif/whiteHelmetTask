@@ -1,0 +1,39 @@
+.attraction-card {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  .centered-text {
+    text-align: center;
+  }
+  
+  .input-field, .input-field-row {
+    margin-bottom: 1rem;
+  }
+  
+  .input-field-row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .half-width {
+    width: 100%;
+  }
+  
+  @media (min-width: 600px) {
+    .half-width {
+      width: 50%;
+    }
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }

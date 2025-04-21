@@ -1,12 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, DestroyRef, inject, model } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-
 import {
   MAT_DIALOG_DATA,
-
   MatDialogRef,
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -47,34 +45,55 @@ export class AddEditUserComponent {
   hidePassword = true;
   createUserForm: FormGroup
 
-
+  constructor(private fb: FormBuilder) {
+    this.createUserForm = this.fb.group<CreateUserForm>({
+      fname: this.fb.control('', { nonNullable: true, validators: [Validators.required] }),
+      lname: this.fb.control('', { nonNullable: true, validators: [Validators.required] }),
+      username: this.fb.control('', { nonNullable: true, validators: [Validators.required] }),
+      email: this.fb.control('', { nonNullable: true, validators: [Validators.required] }),
+      password: this.fb.control('', { nonNullable: true, validators: [Validators.required] }),
+      avatar: this.fb.control('', { nonNullable: true, validators: [Validators.required] }),
+    });
+  }
 
   ngOnInit(): void {
     if (this.data.dialogType == 'edit') {
-      this.createUserForm.patchValue(this.data.user)
+      this.callGetUserById()
     }
   }
-
-
-
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  callGetUserById() {
+    this.userService.getById(this.data.id)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (res: any) => {
+          if (res.status == 'ok') {
+            this.createUserForm.patchValue(res.user)
 
+          }
+          else {
+            this.toasterService.openToaster(res.status == 'error' ? ToasterTypes.error : ToasterTypes.info, {
+              data: {
+                title: res.status,
+                message: res.message,
+              },
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+            this.dialogRef.close();
+          }
+        },
+        error: () => {
+        }
+      })
 
-
-  constructor(private fb: FormBuilder) {
-    this.createUserForm = this.fb.group<CreateUserForm>({
-      fname: this.fb.control('', { nonNullable: true }),
-      lname: this.fb.control('', { nonNullable: true }),
-      username: this.fb.control('', { nonNullable: true, validators: [Validators.required] }),
-      email: this.fb.control('', { nonNullable: true, validators: [Validators.required] }),
-      password: this.fb.control('', { nonNullable: true, validators: [Validators.required] }),
-      avatar: this.fb.control('', { nonNullable: true }),
-    });
   }
+
+
 
   onSubmit() {
     if (this.createUserForm.valid) {
@@ -96,16 +115,18 @@ export class AddEditUserComponent {
         next: (res: ApiResponse<'user', User>) => {
           if (res.status == 'ok') {
           }
+          else {
+            this.toasterService.openToaster(res.status == 'error' ? ToasterTypes.error : ToasterTypes.info, {
+              data: {
+                title: res.status,
+                message: res.message,
+              },
+              horizontalPosition: 'right',
+              verticalPosition: 'top'
+            });
+            this.dialogRef.close();
+          }
 
-          this.toasterService.openToaster(res.status == 'error' ? ToasterTypes.error : ToasterTypes.info, {
-            data: {
-              title: res.status,
-              message: res.message,
-            },
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
-          });
-          this.dialogRef.close();
 
 
         },
@@ -140,17 +161,10 @@ export class AddEditUserComponent {
       })
 
   }
-
-
   onCancel() {
     this.createUserForm.reset();
     this.dialogRef.close();
 
   }
-
-
-
-
-
 
 }
